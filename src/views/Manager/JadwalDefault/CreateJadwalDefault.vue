@@ -119,12 +119,8 @@ export default {
                         router.push('/Manager/JadwalDefault')
                     }
                     ).catch(error => {
-                        // console.log(response);
-                        // if(error.response == 400){
-                            toastr.error('Registration failed!')
+                            toastr.error('Jadwal Bertabrakan')
                             console.log(error);
-                        // }
-
                     }
                     )
             }

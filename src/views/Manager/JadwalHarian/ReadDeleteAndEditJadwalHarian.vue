@@ -177,10 +177,13 @@ export default {
         GenerateJadwalHarian(){
             axios.post('http://localhost:8000/api/jadwalHariangenerate')
             .then((response)=>{
+                console.log(response.data.success);
+                if(response.data.success == false){
+                    toastr.error('Jadwal Sudah Pernah di Generate')
+                }else{
                     toastr.success('Jadwal Sudah di Generate')
-                    console.log('ini di then', response);
+                }
             }).catch(error =>{
-                toastr.error('Jadwal Sudah Pernah di Generate')
                 console.log(error);
             })
         }
