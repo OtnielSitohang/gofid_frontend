@@ -18,24 +18,24 @@
                     {{ item.HARI_JADWAL_DEFAULT == 0 ? 'Senin' : (item.HARI_JADWAL_DEFAULT == 1 ? 'Selasa' :
                         (item.HARI_JADWAL_DEFAULT == 2 ? 'Rabu' : (item.HARI_JADWAL_DEFAULT == 3 ? 'Kamis' :
                             (item.HARI_JADWAL_DEFAULT == 4 ? 'Jumat' : (item.HARI_JADWAL_DEFAULT == 5 ? 'Sabtu' : 'Minggu'))))) }}
-                </template>
+        </template>
 
-                <template v-slot:item.SESI_JADWAL="{ item }">
-                    {{ item.SESI_JADWAL == 0 ? '06:00 - 08:00' : (item.SESI_JADWAL == 1 ? '08:00 - 10:00' :
-                        (item.SESI_JADWAL == 2 ? '10:00 - 12:00' : (item.SESI_JADWAL == 3 ? '12:00 - 14:00' : (item.SESI_JADWAL
-                            == 4 ? '14:00 - 16:00' : (item.SESI_JADWAL == 5 ? '18:00 - 20:00' : '20:00 - 22:00'))))) }}
-                </template>
+        <template v-slot:item.SESI_JADWAL="{ item }">
+            {{ item.SESI_JADWAL == 0 ? '06:00 - 08:00' : (item.SESI_JADWAL == 1 ? '08:00 - 10:00' :
+                (item.SESI_JADWAL == 2 ? '10:00 - 12:00' : (item.SESI_JADWAL == 3 ? '12:00 - 14:00' : (item.SESI_JADWAL
+                    == 4 ? '14:00 - 16:00' : (item.SESI_JADWAL == 5 ? '18:00 - 20:00' : '20:00 - 22:00'))))) }}
+        </template>
 
-                <template v-slot:item.actions="{ item }">
-                    <v-btn x-small class="mr-2" @click="openUpdateDialog(item)">
-                        <v-icon dark>mdi-pencil</v-icon>
-                    </v-btn>
-                    <v-btn x-small @click="openDeleteDialog(item)">
-                        <v-icon dark>mdi-delete</v-icon>
-                    </v-btn>
-                </template>
+        <template v-slot:item.actions="{ item }">
+            <v-btn x-small class="mr-2" @click="openUpdateDialog(item)">
+                <v-icon dark>mdi-pencil</v-icon>
+            </v-btn>
+            <v-btn x-small @click="openDeleteDialog(item)">
+                <v-icon dark>mdi-delete</v-icon>
+            </v-btn>
+        </template>
 
-            </v-data-table>
+        </v-data-table>
         </template>
 
         <!-- Dialog Delete -->
@@ -85,12 +85,16 @@
                                         v-model="editData.ID_KELAS">
                                     </v-select>
 
-                                    <v-select label="SESI JADWAL" v-model="editData.SESI_JADWAL" :items="SESI_JADWAL">
+                                    <v-select label="SESI JADWAL" v-model="editData.SESI_JADWAL" :items="SESI_JADWAL" >
                                     </v-select>
 
                                     <v-select label="HARI" v-model="editData.HARI_JADWAL_DEFAULT"
                                         :items="HARI_JADWAL_DEFAULT">
                                     </v-select>
+
+                                    <v-text-field v-model="editData.HARI_JADWAL_DEFAULT" label="Email"
+                                        prepend-icon="mdi-email">
+                                    </v-text-field>
 
                                     <v-select label="Instruktur" v-model="editData.ID_INSTRUKTUR" :items="NamaInstrutur"
                                         item-text="NAMA_USER" item-value="ID_INSTRUKTUR">
@@ -136,35 +140,35 @@ export default {
                 HARI_JADWAL_DEFAULT: "",
             },
             SESI_JADWAL: [{
-                text: '06:00 - 08:00', value: '0'
+                text: '06:00 - 08:00', value: 0
             }, {
-                text: '08:00 - 10:00', value: '1'
+                text: '08:00 - 10:00', value: 1
             }, {
-                text: '10:00 - 12:00', value: '2'
+                text: '10:00 - 12:00', value: 2
             }, {
-                text: '12:00 - 14:00', value: '3'
+                text: '12:00 - 14:00', value: 3
             }, {
-                text: '14:00 - 16:00', value: '4'
+                text: '14:00 - 16:00', value: 4
             }, {
-                text: '18:00 - 20:00', value: '5'
+                text: '18:00 - 20:00', value: 5
             }, {
-                text: '20:00 - 22:00', value: '6'
+                text: '20:00 - 22:00', value: 6
             }],
 
             HARI_JADWAL_DEFAULT: [{
-                text: 'Senin', value: '0'
+                text: 'Senin', value: 0
             }, {
-                text: 'Selasa', value: '1'
+                text: 'Selasa', value: 1
             }, {
-                text: 'Rabu', value: '2'
+                text: 'Rabu', value: 3
             }, {
-                text: 'Kamis', value: '3'
+                text: 'Kamis', value: 4
             }, {
-                text: 'Jumat', value: '4'
+                text: 'Jumat', value: 5
             }, {
-                text: 'Sabtu', value: '5'
+                text: 'Sabtu', value: 6
             }, {
-                text: 'Minggu', value: '6'
+                text: 'Minggu', value: 7
             }],
         };
     },
@@ -193,48 +197,49 @@ export default {
         },
 
         openUpdateDialog(item) {
-            this.UpdateDialog = true;
+            this.UpdateDialog = true; 
             this.editData.ID_KELAS = item.ID_KELAS
             this.editData.ID_INSTRUKTUR = item.ID_INSTRUKTUR
             this.editData.ID_USER = item.ID_USER
             this.editData.SESI_JADWAL = item.SESI_JADWAL
             this.editData.HARI_JADWAL_DEFAULT = item.HARI_JADWAL_DEFAULT
             this.updateTarget = item;
+        
         },
 
         UpdateMemberProcess() {
+            console.log('update process',this.editData);
             if (this.editData.ID_KELAS == "") {
                 toastr.error('Please fill in the Kelas!')
                 return;
-            } 
+            }
             if (this.editData.ID_INSTRUKTUR == "") {
                 toastr.error('Please fill in the Instruktur!')
                 return;
-            } 
-            if (this.editData.SESI_JADWAL == "") {
+            }
+            if (this.editData.SESI_JADWAL == null) {
                 toastr.error('Please fill in the Sesi')
                 return;
             }
-            if (this.editData.HARI_JADWAL_DEFAULT == "") {
-                toastr.error('Please fill in the Haru')
+            if (this.editData.HARI_JADWAL_DEFAULT == null) {
+                toastr.error('Please fill in the Hari')
                 return;
             }
-                // console.log(this.editData);
-                axios.put('http://localhost:8000/api/jadwal_default/update/' + this.editData.ID_USER, { ...this.editData }
-                )
-                    .then(() => {
-                        toastr.success('You have successfully Update, Thanks You')
-                        this.UpdateDialog = false;
-                        window.location.reload();
-                        console.log(this.formUser)
-                    }
-                    ).catch(error => {
-                        toastr.error('Update failed!')
-                        console.log(error);
+            axios.put('http://localhost:8000/api/jadwal_default/update/' + this.editData.ID_JADWAL, {...this.editData} 
+            )
+                .then(() => {
+                    console.log(this.editData)
+                    toastr.success('You have successfully Update, Thanks You')
+                    this.UpdateDialog = false;
+                    window.location.reload();
+                }
+                ).catch(error => {
+                    toastr.error('Update failed!')
+                    console.log(error);
 
-                    }
-                    )
-            
+                }
+                )
+
         },
     },
 
