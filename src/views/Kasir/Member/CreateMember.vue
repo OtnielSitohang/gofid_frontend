@@ -133,20 +133,24 @@ export default {
                 return;
             }
 
-
-
             if (this.formUser.TANGGAL_LAHIR_USER == "") {
                 toastr.error('Please fill in the birthdate!')
                 return;
+            }else if(new Date(this.formUser.TANGGAL_LAHIR_USER) > new Date()){
+                toastr.error('Anda Belum Lahir')
+                return;
             } 
+
+
+
             if (this.formUser.ALAMAT_MEMBER == "") {
                 toastr.error('Please fill in the ALAMAT_MEMBER!')
                 return;
             } 
-            if (this.formUser.user_photo == null) {
-                toastr.error('Please fill in the photo!')
-                return;
-            }
+            // if (this.formUser.user_photo == null) {
+            //     toastr.error('Please fill in the photo!')
+            //     return;
+            // }
 
             if (this.formUser.TELEPON_MEMBER == "") {
                 toastr.error('Please fill in the TELEPON_MEMBER!')

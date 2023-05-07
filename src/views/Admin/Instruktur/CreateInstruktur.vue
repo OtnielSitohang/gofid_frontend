@@ -6,6 +6,7 @@
                     <h1 class="mb-6">Create Instruktur</h1>
                 </v-col>
             </v-row>
+            <!-- <v-form > -->
             <v-row>
                 <v-col cols="12" sm="6" md="4">
                     <!-- <input id="InputFoto" @input="HowToInputFotoUseBase64" type="file" accept="image/*">
@@ -34,14 +35,14 @@
                         transition="scale-transition" offset-y min-width="auto">
                         <template v-slot:activator="{ on, attrs }">
                             <v-text-field v-model="formUser.TANGGAL_LAHIR_USER" label="Birthdate"
-                                prepend-icon="mdi-calendar" readonly v-bind="attrs" v-on="on"></v-text-field>
+                                prepend-icon="mdi-calendar" readonly v-bind="attrs" v-on="on"
+                            ></v-text-field>
                         </template>
                         <v-date-picker v-model="formUser.TANGGAL_LAHIR_USER"
                             @input="birthdatePicker = false"></v-date-picker>
                     </v-menu>
                     <v-text-field v-model="formUser.DESKRIPSI_INSTRUKTUR" label="DESKRIPSI_INSTRUKTUR"
                         prepend-icon="mdi-book">
-                        <!-- :rules="[val => /^\d+$/.test(val) || 'Nomor Telp Harus Angka']" -->
                     </v-text-field>
 
                 </v-col>
@@ -54,6 +55,7 @@
                     </div>
                 </v-col>
             </v-row>
+        <!-- </v-form> -->
 
             <!-- PerifDialog -->
         <v-dialog v-model="VerifDialog" max-width="320" persistent>
@@ -63,11 +65,11 @@
                 </v-card-title>
                 <v-card-actions>
                     <v-spacer></v-spacer>
+                    <v-btn color="green darken-1" text @click="createUserProcess()">
+                        Yes
+                    </v-btn>
                     <v-btn color="green darken-1" text   @click="closeVerifDialog()">
                         Cancel
-                    </v-btn>
-                    <v-btn color="green darken-1" text @click="createUserProcess">
-                        Yes
                     </v-btn>
                 </v-card-actions>
             </v-card>
@@ -164,11 +166,14 @@ export default {
             if (this.formUser.TANGGAL_LAHIR_USER == "") {
                 toastr.error('Please fill in the birthdate!')
                 return;
-            }  
-            if (this.formUser.FOTO_USER == "") {
-                toastr.error('Please fill in the photo!')
+            }else if(new Date(this.formUser.TANGGAL_LAHIR_USER) > new Date()){
+                toastr.error('Anda Belum Lahir')
                 return;
-            }  
+            }
+            // if (this.formUser.FOTO_USER == "") {
+            //     toastr.error('Please fill in the photo!')
+            //     return;
+            // }  
             if (this.formUser.DESKRIPSI_INSTRUKTUR == "") {
                 toastr.error('Please fill in the DESKRIPSI_INSTRUKTUR!')
                 return;

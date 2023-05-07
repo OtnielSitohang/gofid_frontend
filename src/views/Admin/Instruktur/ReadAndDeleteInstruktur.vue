@@ -188,22 +188,35 @@ export default {
 
     methods: {
         UpdateInstrukturProccess() {
-            if (this.editData.DESKRIPSI_INSTRUKTUR == "") {
-                toastr.error('Please fill in the Motto!')
-                return;
-            }
+            const regexEmail = /^\S+@\S+\.\S+$/;
+            
             if (this.editData.NAMA_USER == "") {
                 toastr.error('Please fill in the name!')
                 return;
-            }
+            }  
             if (this.editData.EMAIL_USER == "") {
-                toastr.error('Please fill in the Email!')
+                toastr.error('Please fill in the email!')
                 return;
-            }
+            } else if (!regexEmail.test(this.editData.EMAIL_USER)){
+                toastr.error('Please enter a valid email address for EMAIL_MEMBER!')
+                return;
+            }  
+
             if (this.editData.TANGGAL_LAHIR_USER == "") {
-                toastr.error('Please fill in the Bhirtday!')
+                toastr.error('Please fill in the birthdate!')
+                return;
+            }else if(new Date(this.editData.TANGGAL_LAHIR_USER) > new Date()){
+                toastr.error('Anda Belum Lahir')
                 return;
             }
+            // if (this.editData.FOTO_USER == "") {
+            //     toastr.error('Please fill in the photo!')
+            //     return;
+            // }  
+            if (this.editData.DESKRIPSI_INSTRUKTUR == "") {
+                toastr.error('Please fill in the DESKRIPSI_INSTRUKTUR!')
+                return;
+            }  
 
             axios.put('http://localhost:8000/api/instruktur/update/' + this.editData.ID_USER, {
                 DESKRIPSI_INSTRUKTUR: this.editData.DESKRIPSI_INSTRUKTUR,

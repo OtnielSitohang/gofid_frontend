@@ -11,15 +11,15 @@
                     <v-select label="Kelas"
                         :items="NamaKelas" item-text="NAMA_KELAS" item-value="ID_KELAS" v-model="formUser.ID_KELAS">
                     </v-select>
+                    
+                    <v-select label="HARI" v-model="formUser.HARI_JADWAL_DEFAULT"
+                        :items="HARI_JADWAL_DEFAULT">
+                    </v-select>
 
                     <v-select label="SESI JADWAL" v-model="formUser.SESI_JADWAL"
                         :items="SESI_JADWAL">
                     </v-select>
 
-                    <v-select label="HARI" v-model="formUser.HARI_JADWAL_DEFAULT"
-                        :items="HARI_JADWAL_DEFAULT">
-                    </v-select>
-                    
                     <v-select label="Instruktur" v-model="formUser.ID_INSTRUKTUR"
                         :items="NamaInstrutur" item-text="NAMA_USER" item-value="ID_INSTRUKTUR">
                     </v-select>
@@ -119,8 +119,11 @@ export default {
                         router.push('/Manager/JadwalDefault')
                     }
                     ).catch(error => {
-                        toastr.error('Registration failed!')
-                        console.log(error);
+                        // console.log(response);
+                        // if(error.response == 400){
+                            toastr.error('Registration failed!')
+                            console.log(error);
+                        // }
 
                     }
                     )

@@ -333,7 +333,10 @@ export default {
 
             //Tanggal Lahir User
             if (this.editData.TANGGAL_LAHIR_USER == "") {
-                toastr.error('Please fill in the Date!')
+                toastr.error('Please fill in the birthdate!')
+                return;
+            }else if(new Date(this.editData.TANGGAL_LAHIR_USER) > new Date()){
+                toastr.error('Anda Belum Lahir')
                 return;
             }
 

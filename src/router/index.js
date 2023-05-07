@@ -103,6 +103,20 @@ const routes = [{
                     import ("../views/Manager/JadwalDefault/CreateJadwalDefault.vue"),
             },
 
+
+
+
+
+            //Jadwal harian
+            {
+                path: "/Manager/JadwalHarian",
+                name: "JadwalHarian",
+                meta: { title: "JadwalHarian" },
+                component: () =>
+                    import ("../views/Manager/JadwalHarian/ReadDeleteAndEditJadwalHarian.vue"),
+            },
+
+
         ],
 
     }

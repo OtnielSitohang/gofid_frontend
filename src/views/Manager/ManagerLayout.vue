@@ -174,11 +174,11 @@ export default {
 				text: "Jadwal Umum",
 				to: "/Manager/JadwalDefault",
 			},
-			// {
-			// 	icon: "mdi-cash-multiple",
-			// 	text: "Promo",
-			// 	to: "..",
-			// },
+			{
+				icon: "mdi-cash-multiple",
+				text: "Jadwal Harian",
+				to: "/Manager/JadwalHarian",
+			},
 			// {
 			// 	icon: "mdi-account-multiple",
 			// 	text: "Member",
