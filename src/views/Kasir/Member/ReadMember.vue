@@ -388,7 +388,6 @@ export default {
 
     setup() {
         let MemberController = ref([]);
-        // let displayMemberCard = ref([]);
         onMounted(() => {
             axios.get('http://localhost:8000/api/member')
                 .then(response => {
@@ -403,9 +402,7 @@ export default {
 
         function displayMemberCard(member) {
             this.memberCardDialog = true
-            // memberCardOpenedMemberID.value = member.ID_MEMBER
             var background = new Image()
-            // background.src = 'src/assets/Gofid.jpg'
             setTimeout(() => {
                 var canvas = document.createElement('canvas')
                 //Ukuran Canvas
@@ -429,7 +426,7 @@ export default {
                 ctx.fillText('PHONE    : ' + member.TELEPON_MEMBER, 25, 220)
                 // memberCardDialogSpinnerState.value = false
                 this.memberCardOpenedCanvas = canvas
-            }, 3000)
+            }, 1000)
         }
         return {
             MemberController,

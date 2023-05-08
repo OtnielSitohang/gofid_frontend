@@ -79,6 +79,23 @@ const routes = [{
                     import ("../views/Kasir/Member/CreateMember.vue"),
             },
 
+
+            //Deposite Uang
+            {
+                path: "/Kasir/deposit",
+                name: "Deposite",
+                meta: { title: "Deposite" },
+                component: () =>
+                    import ("../views/Kasir/Deposituang/DepositUang.vue"),
+            },
+            {
+                path: "Deposite/print",
+                name: "Cetak Struk",
+                meta: { title: "Cetak Struck" },
+                component: () =>
+                    import ("../views/Kasir/Deposituang/cetakStruck.vue"),
+            },
+
         ],
     },
 

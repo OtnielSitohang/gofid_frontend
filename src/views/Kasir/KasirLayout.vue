@@ -174,11 +174,11 @@ export default {
 				text: "Member",
 				to: "/kasir/Member",
 			},
-			// {
-			// 	icon: "mdi-cash-multiple",
-			// 	text: "Promo",
-			// 	to: "..",
-			// },
+			{
+				icon: "mdi-cash-multiple",
+				text: "Deposit Uang",
+				to: "/kasir/deposit",
+			},
 			// {
 			// 	icon: "mdi-account-multiple",
 			// 	text: "Member",
