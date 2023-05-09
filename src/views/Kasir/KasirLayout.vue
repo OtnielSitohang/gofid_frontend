@@ -179,11 +179,16 @@ export default {
 				text: "Deposit Uang",
 				to: "/kasir/deposit",
 			},
-			// {
-			// 	icon: "mdi-account-multiple",
-			// 	text: "Member",
-			// 	to: "..",
-			// },
+			{
+				icon: "mdi-account-key-outline",
+				text: "Deposite Kelas",
+				to: "/kasir/DepositKelas",
+			},
+			{
+				icon: "mdi-account-key-outline",
+				text: "Aktivasi Tahunan",
+				to: "/kasir/AktivasiTahunan",
+			},
 		],
 	}),
 

@@ -96,6 +96,40 @@ const routes = [{
                     import ("../views/Kasir/Deposituang/cetakStruck.vue"),
             },
 
+
+            //Deposite Kelas
+            {
+                path: "/kasir/DepositKelas",
+                name: "Deposite",
+                meta: { title: "Deposite" },
+                component: () =>
+                    import ("../views/Kasir/DepositKelas/DepositeKelas.vue"),
+            },
+            {
+                path: "DepositeKelas/print",
+                name: "Cetak Struk",
+                meta: { title: "Cetak Struck" },
+                component: () =>
+                    import ("../views/Kasir/DepositKelas/CetakStruckKelas.vue"),
+            },
+
+
+            //Akativasi Tahunan
+            {
+                path: "/Kasir/AktivasiTahunan",
+                name: "AktivasiTahunan",
+                meta: { title: "AktivasiTahunan" },
+                component: () =>
+                    import ("../views/Kasir/AktivasiTahunan/AktivasiTahunan.vue"),
+            },
+            {
+                path: "AktivasiTahunan/createAktivasi",
+                name: "Aktavasi",
+                meta: { title: "Aktavasi" },
+                component: () =>
+                    import ("../views/Kasir/AktivasiTahunan/createAktivasi.vue"),
+            },
+
         ],
     },
 

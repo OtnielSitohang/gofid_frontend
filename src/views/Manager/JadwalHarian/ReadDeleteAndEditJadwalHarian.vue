@@ -15,10 +15,10 @@
         </v-row>
         <template>
             <v-data-table :headers="headers" :items="JadwalHarianController" :search="search">
-                <template v-slot:item.HARI_JADWAL_DEFAULT="{ item }">
-                    {{ item.HARI_JADWAL_DEFAULT == 0 ? 'Senin' : (item.HARI_JADWAL_DEFAULT == 1 ? 'Selasa' :
-                        (item.HARI_JADWAL_DEFAULT == 2 ? 'Rabu' : (item.HARI_JADWAL_DEFAULT == 3 ? 'Kamis' :
-                            (item.HARI_JADWAL_DEFAULT == 4 ? 'Jumat' : (item.HARI_JADWAL_DEFAULT == 5 ? 'Sabtu' : 'Minggu'))))) }}
+                <template v-slot:item.HARI_JADWAL_HARIAN="{ item }">
+                    {{ item.HARI_JADWAL_HARIAN == 0 ? 'Senin' : (item.HARI_JADWAL_HARIAN == 1 ? 'Selasa' :
+                        (item.HARI_JADWAL_HARIAN == 2 ? 'Rabu' : (item.HARI_JADWAL_HARIAN == 3 ? 'Kamis' :
+                            (item.HARI_JADWAL_HARIAN == 4 ? 'Jumat' : (item.HARI_JADWAL_HARIAN == 5 ? 'Sabtu' : 'Minggu'))))) }}
                 </template>
 
                 <template v-slot:item.SESI_JADWAL="{ item }">
@@ -81,7 +81,7 @@ export default {
             headers: [
                 { text: "Kelas", value: "NAMA_KELAS" },
                 { text: "Instrukur", value: "NAMA_USER" },
-                { text: "Hari", value: "HARI_JADWAL_DEFAULT" },
+                { text: "Hari", value: "HARI_JADWAL_HARIAN" },
                 { text: "Sesi", value: "SESI_JADWAL" },
                 { text: "Status", value: "STATUS" },
                 { text: "Actions", value: "actions", sortable: false },
@@ -91,7 +91,7 @@ export default {
                 ID_KELAS: null,
                 ID_INSTRUKTUR: null,
                 ID_USER: null,
-                HARI_JADWAL_DEFAULT: null,
+                HARI_JADWAL_HARIAN: null,
                 SESI_JADWAL: null,
                 STATUS: null,
             },
@@ -111,7 +111,7 @@ export default {
                 text: '20:00 - 22:00', value: 6
             }],
 
-            HARI_JADWAL_DEFAULT: [{
+            HARI_JADWAL_HARIAN: [{
                 text: 'Senin', value: 0
             }, {
                 text: 'Selasa', value: 1
@@ -145,7 +145,7 @@ export default {
             this.editData.ID_INSTRUKTUR = item.ID_INSTRUKTUR
             this.editData.ID_USER = item.ID_USER
             this.editData.SESI_JADWAL = item.SESI_JADWAL
-            this.editData.HARI_JADWAL_DEFAULT = item.HARI_JADWAL_DEFAULT
+            this.editData.HARI_JADWAL_HARIAN = item.HARI_JADWAL_HARIAN
             this.editData.STATUS = item.STATUS
             this.updateTarget = item;
         },
