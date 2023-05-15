@@ -179,11 +179,11 @@ export default {
 				text: "Jadwal Harian",
 				to: "/Manager/JadwalHarian",
 			},
-			// {
-			// 	icon: "mdi-account-multiple",
-			// 	text: "Member",
-			// 	to: "..",
-			// },
+			{
+				icon: "mdi-account-multiple",
+				text: "Izin Instruktur",
+				to: "/Manager/Izin",
+			},
 		],
 	}),
 

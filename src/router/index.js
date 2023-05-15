@@ -73,7 +73,7 @@ const routes = [{
             },
             {
                 path: "/Kasir/Member/Create",
-                name: "Create",
+                name: "Create Member",
                 meta: { title: "MembeCreate" },
                 component: () =>
                     import ("../views/Kasir/Member/CreateMember.vue"),
@@ -83,14 +83,14 @@ const routes = [{
             //Deposite Uang
             {
                 path: "/Kasir/deposit",
-                name: "Deposite",
+                name: "Deposite Uang",
                 meta: { title: "Deposite" },
                 component: () =>
                     import ("../views/Kasir/Deposituang/DepositUang.vue"),
             },
             {
                 path: "Deposite/print",
-                name: "Cetak Struk",
+                name: "Cetak Struk Deposite Uang",
                 meta: { title: "Cetak Struck" },
                 component: () =>
                     import ("../views/Kasir/Deposituang/cetakStruck.vue"),
@@ -100,14 +100,14 @@ const routes = [{
             //Deposite Kelas
             {
                 path: "/kasir/DepositKelas",
-                name: "Deposite",
+                name: "Deposite Kelas",
                 meta: { title: "Deposite" },
                 component: () =>
                     import ("../views/Kasir/DepositKelas/DepositeKelas.vue"),
             },
             {
                 path: "DepositeKelas/print",
-                name: "Cetak Struk",
+                name: "Cetak Struk Deposite Kelas",
                 meta: { title: "Cetak Struck" },
                 component: () =>
                     import ("../views/Kasir/DepositKelas/CetakStruckKelas.vue"),
@@ -148,7 +148,7 @@ const routes = [{
             },
             {
                 path: "/Manager/JadwalDefault/Create",
-                name: "Create",
+                name: "Create Jadwal",
                 meta: { title: "JadwalDefaultCreate" },
                 component: () =>
                     import ("../views/Manager/JadwalDefault/CreateJadwalDefault.vue"),
@@ -165,6 +165,15 @@ const routes = [{
                 meta: { title: "JadwalHarian" },
                 component: () =>
                     import ("../views/Manager/JadwalHarian/ReadDeleteAndEditJadwalHarian.vue"),
+            },
+
+            //Izin Instruktur
+            {
+                path: "/Manager/Izin",
+                name: "IzinInstruktur",
+                meta: { title: "IzinInstruktur" },
+                component: () =>
+                    import ("../views/Manager/IjinInstruktur/ijinInstruktur.vue"),
             },
 
 
