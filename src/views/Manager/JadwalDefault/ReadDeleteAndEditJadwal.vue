@@ -34,7 +34,6 @@
                 <v-icon dark>mdi-delete</v-icon>
             </v-btn>
         </template>
-
         </v-data-table>
         </template>
 

@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+
 Vue.use(VueRouter)
+
 
 const routes = [{
         path: '/',
@@ -129,6 +131,52 @@ const routes = [{
                 component: () =>
                     import ("../views/Kasir/AktivasiTahunan/createAktivasi.vue"),
             },
+
+            //MendeaktifasiMember
+            {
+                path: "/Kasir/MendeaktifasiMember",
+                name: "MendeaktifasiMember",
+                meta: { title: "MendeaktifasiMember" },
+                component: () =>
+                    import ("../views/Kasir/Sistem/MendeaktifasiMember.vue"),
+            },
+
+            //DepositeKelasReset
+            {
+                path: "/Kasir/DepositePaket",
+                name: "DepositeKelasReset",
+                meta: { title: "DepositeKelasReset" },
+                component: () =>
+                    import ("../views/Kasir/Sistem/DepositePaketReset.vue"),
+            },
+
+
+            //Presensi Member Gym
+            {
+                path: "/Kasir/PresensiMemberGym",
+                name: "PresensiMemberGym",
+                meta: { title: "PresensiMemberGym" },
+                component: () =>
+                    import ("../views/Kasir/PresensiMemberGym/IndexPresensiGym.vue"),
+            },
+            //Presensi Kelas Reguler
+            {
+                path: "/Kasir/PresensiKelas",
+                name: "PresensiKelas",
+                meta: { title: "PresensiKelas" },
+                component: () =>
+                    import ("../views/Kasir/PresensiKelasPaketReguler/IndexPresensiKelas.vue"),
+            },
+
+            //Presensi Kelas Paket
+            {
+                path: "/Kasir/PresensiKelasPaket",
+                name: "PresensiKelasPaket",
+                meta: { title: "PresensiKelasPaket" },
+                component: () =>
+                    import ("../views/Kasir/PresensiKelasPaket/PresensiKelasPaketReguler.vue"),
+            },
+
 
         ],
     },

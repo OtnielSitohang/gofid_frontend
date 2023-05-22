@@ -10,19 +10,29 @@
             </v-card-title>
             <v-data-table :headers="headers" :items="dataIzin" :search="search">
 
+                <!-- eslint-disable-next-line  -->
+                <template v-slot:item.HARI_IZIN="{ item }">
+                    {{ item.HARI_IZIN == 0 ? 'Senin' : (item.HARI_IZIN == 1 ? 'Selasa' :
+                        (item.HARI_IZIN == 2 ? 'Rabu' : (item.HARI_IZIN == 3 ? 'Kamis' :
+                            (item.HARI_IZIN == 4 ? 'Jumat' : (item.HARI_IZIN == 5 ? 'Sabtu' : 'Minggu'))))) }}
+                </template>
+                            
+                
+                <!-- eslint-disable-next-line  -->
                 <template v-slot:item.STATUS_IZIN ="{ item }">
                     {{ item.STATUS_IZIN == 0 ? 'Belum Di Konfirmasi' : (item.STATUS_IZIN == 1 ? 'Izin Di Berikan' : 'Izin Di Tolak') }}
                 </template>
 
+                <!-- eslint-disable-next-line  -->
                 <template v-slot:item.SESI_IZIN="{ item }">
                     {{ item.SESI_IZIN == 0 ? '06:00 - 08:00' : (item.SESI_IZIN == 1 ? '08:00 - 10:00' :
-                        (item.SESI_IZIN == 2 ? '10:00 - 12:00' : (item.SESI_IZIN == 3 ? '12:00 - 14:00' : (item.SESI_IZIN
-                            == 4 ? '14:00 - 16:00' : (item.SESI_IZIN == 5 ? '18:00 - 20:00' : '20:00 - 22:00'))))) }}
+                    (item.SESI_IZIN == 2 ? '10:00 - 12:00' : (item.SESI_IZIN == 3 ? '12:00 - 14:00' : (item.SESI_IZIN
+                    == 4 ? '14:00 - 16:00' : (item.SESI_IZIN == 5 ? '18:00 - 20:00' : '20:00 - 22:00'))))) }}
                 </template>
-
-                <template v-slot:[`item.actions`]="{ item }">
-
-                    <v-btn color="white" @click="dialogConfirm2 = true" v-if="item.STATUS_IZIN == '0'">
+                
+                <!-- eslint-disable-next-line  -->
+                <template v-slot:item.actions="{ item }">
+                    <v-btn color="white" @click="setData(item)" v-if="item.STATUS_IZIN == '0'">
                         Confirm
                     </v-btn>
 
@@ -35,8 +45,8 @@
                             <v-card-actions>
                                 <v-spacer></v-spacer>
                                 <v-btn color="green" text @click="dialogConfirm2 = false"> Cancel </v-btn>
-                                <v-btn color="red darken-1" text @click="acceptHandler(item)"> Accept </v-btn>
-                                <v-btn color="yellow darken-1" text @click="rejectHandler(item)"> Reject </v-btn>
+                                <v-btn color="red darken-1" text @click="acceptHandler()"> Accept </v-btn>
+                                <v-btn color="yellow darken-1" text @click="rejectHandler()"> Reject </v-btn>
                             </v-card-actions>
                         </v-card>
                     </v-dialog>
@@ -76,15 +86,22 @@ export default {
                 { text: 'Aksi', value: 'actions' },
 
             ],
+          
             editId: '',
             deleteId: '',
             dataIzin: ref([]),
+            selectedData : {},
             // member : {}
             // router: useRouter(),
 
         }
     },
     methods: {
+        setData(item){
+            console.log(item);
+            this.selectedData = item;
+            this.dialogConfirm2 = true;
+        },
         async getDataIzin() {
             const url = "http://127.0.0.1:8000/api/ijininstruktur";
             const request = await axios.get(url)
@@ -92,15 +109,17 @@ export default {
             this.dataIzin = request.data.data
         },
 
-        async acceptHandler(item) {
-            const url = `http://127.0.0.1:8000/api/ijininstruktur/${item.ID_IJIN_INSTRUKTUR}`;
+        async acceptHandler() {
+            // console.log(item.ID_IJIN_INSTRUKTUR);
+            const url = `http://127.0.0.1:8000/api/ijininstruktur/${this.selectedData.ID_IJIN_INSTRUKTUR}`;
             const request = await axios.put(url, { STATUS_IZIN: 1 })
             console.log(request.data.data)
             this.dialogConfirm2 = false;
             this.getDataIzin();
         },
-        async rejectHandler(item) {
-            const url = `http://127.0.0.1:8000/api/ijininstruktur/${item.ID_IJIN_INSTRUKTUR}`;
+        async rejectHandler() {
+            // console.log(item.ID_IJIN_INSTRUKTUR);
+            const url = `http://127.0.0.1:8000/api/ijininstruktur/${this.selectedData.ID_IJIN_INSTRUKTUR}`;
             const request = await axios.put(url, { STATUS_IZIN: 2 })
             console.log(request.data.data)
             this.dialogConfirm2 = false;

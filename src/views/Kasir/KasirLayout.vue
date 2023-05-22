@@ -189,6 +189,37 @@ export default {
 				text: "Aktivasi Tahunan",
 				to: "/kasir/AktivasiTahunan",
 			},
+			{
+				icon: "mdi-account-key-outline",
+				text: "MendeaktifasiMember",
+				to: "/kasir/MendeaktifasiMember",
+			},
+			{
+				icon: "mdi-account-key-outline",
+				text: "DepositeKelasReset",
+				to: "/kasir/DepositePaket",
+			},
+
+			//Presensi Member Gym
+			{
+				icon: "mdi-account-key-outline",
+				text: "PresensiMemberGym",
+				to: "/kasir/PresensiMemberGym",
+			},
+
+			//Presensi Kelas Reguler
+			{
+				icon: "mdi-account-key-outline",
+				text: "PresensiKelasReguler",
+				to: "/kasir/PresensiKelas",
+			},
+
+			//Presensi Kelas Paket
+			{
+				icon: "mdi-account-key-outline",
+				text: "PresensiKelasPaket",
+				to: "/kasir/PresensiKelasPaket",
+			},
 		],
 	}),
 
