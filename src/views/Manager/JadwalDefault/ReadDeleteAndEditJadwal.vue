@@ -18,13 +18,13 @@
                     {{ item.HARI_JADWAL_DEFAULT == 0 ? 'Senin' : (item.HARI_JADWAL_DEFAULT == 1 ? 'Selasa' :
                         (item.HARI_JADWAL_DEFAULT == 2 ? 'Rabu' : (item.HARI_JADWAL_DEFAULT == 3 ? 'Kamis' :
                             (item.HARI_JADWAL_DEFAULT == 4 ? 'Jumat' : (item.HARI_JADWAL_DEFAULT == 5 ? 'Sabtu' : 'Minggu'))))) }}
-        </template>
+                </template>
 
-        <template v-slot:item.SESI_JADWAL="{ item }">
-            {{ item.SESI_JADWAL == 0 ? '06:00 - 08:00' : (item.SESI_JADWAL == 1 ? '08:00 - 10:00' :
-                (item.SESI_JADWAL == 2 ? '10:00 - 12:00' : (item.SESI_JADWAL == 3 ? '12:00 - 14:00' : (item.SESI_JADWAL
-                    == 4 ? '14:00 - 16:00' : (item.SESI_JADWAL == 5 ? '18:00 - 20:00' : '20:00 - 22:00'))))) }}
-        </template>
+                <template v-slot:item.SESI_JADWAL="{ item }">
+                    {{ item.SESI_JADWAL == 0 ? '06:00 - 08:00' : (item.SESI_JADWAL == 1 ? '08:00 - 10:00' :
+                        (item.SESI_JADWAL == 2 ? '10:00 - 12:00' : (item.SESI_JADWAL == 3 ? '12:00 - 14:00' : (item.SESI_JADWAL
+                            == 4 ? '14:00 - 16:00' : (item.SESI_JADWAL == 5 ? '18:00 - 20:00' : '20:00 - 22:00'))))) }}
+                </template>
 
         <template v-slot:item.actions="{ item }">
             <v-btn x-small class="mr-2" @click="openUpdateDialog(item)">

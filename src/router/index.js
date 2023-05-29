@@ -224,6 +224,15 @@ const routes = [{
                     import ("../views/Manager/IjinInstruktur/ijinInstruktur.vue"),
             },
 
+            //Laporan
+            {
+                path: "/Manager/LaporanAktivasiKelasBulanan",
+                name: "LaporanAktivasiKelasBulanan",
+                meta: { title: "LaporanAktivasiKelasBulanan" },
+                component: () =>
+                    import ("../views/Manager/Laporan/LaporanAktivasiKelasBulanan.vue"),
+            },
+
 
         ],
 

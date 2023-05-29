@@ -1,66 +1,38 @@
 <!-- eslint-disable vue/valid-v-slot -->
 <template>
     <div class="ma-12">
-    
         <v-row>
-    
             <v-col>
-    
                 <h1 class="mb-6">
-    
                     Presensi Kelas Paket
-    
                     <span class="blue--text">GO</span><span class="green--text">FID</span>
-    
                 </h1>
-    
             </v-col>
-    
             <v-text-field v-model="search" append-icon="mdi-magnify" label="Search" single-line hide-details></v-text-field>
-    
         </v-row>
-    
         <template>
-    
-                <v-data-table :headers="headers" :items="PresensiKelasPaket" :search="search">
-    
-    
-    
-                    <template v-slot:item.SESI_BOOKING_KELAS="{ item }">
-    
-                        {{ item.SESI_BOOKING_KELAS == 0 ? '06:00 - 08:00' : (item.SESI_BOOKING_KELAS == 1 ? '08:00 - 10:00' :
-    
-                            (item.SESI_BOOKING_KELAS == 2 ? '10:00 - 12:00' : (item.SESI_BOOKING_KELAS == 3 ? '12:00 - 14:00' :
-    
-                                (item.SESI_BOOKING_KELAS
-    
-                                    == 4 ? '14:00 - 16:00' : (item.SESI_BOOKING_KELAS == 5 ? '18:00 - 20:00' : '20:00 - 22:00'))))) }}
-</template>
-
-<template v-slot:item.STATUS_PRESENSI="{ item }">
-     {{ item.STATUS_PRESENSI == 0 ? 'Belum Di Presensi' : 'Sudah di Presensi' }}
-</template>
-
-<template v-slot:item.actions="{ item }">
-    <v-btn x-small class="mr-2" @click="openVerifDialog(item)" v-if="item.STATUS_PRESENSI !== 1" color="green"> Presensi
-    
-        <v-icon color="white">mdi-rotate-left</v-icon>
-    
-    </v-btn>
-    
-    
-    
-    <v-btn x-small class="mr-2" @click="displayCetakPresensiGym(item)" v-if="item.STATUS_PRESENSI === 1" color="green"> Cetak
-    
-        <v-icon color="white">mdi-rotate-left</v-icon>
-    
-    </v-btn>
-</template>
-
-
+            <v-data-table :headers="headers" :items="PresensiKelasPaket" :search="search">
+                <template v-slot:item.SESI_BOOKING_KELAS="{ item }">
+                    {{ item.SESI_BOOKING_KELAS == 0 ? '06:00 - 08:00' : (item.SESI_BOOKING_KELAS == 1 ? '08:00 - 10:00' :
+                        (item.SESI_BOOKING_KELAS == 2 ? '10:00 - 12:00' : (item.SESI_BOOKING_KELAS == 3 ? '12:00 - 14:00' :
+                            (item.SESI_BOOKING_KELAS
+                                == 4 ? '14:00 - 16:00' : (item.SESI_BOOKING_KELAS == 5 ? '18:00 - 20:00' : '20:00 - 22:00'))))) }}
+                </template>
+                <template v-slot:item.STATUS_PRESENSI="{ item }">
+                    {{ item.STATUS_PRESENSI == 0 ? 'Belum Di Presensi' : 'Sudah di Presensi' }}
+                </template>
+                <template v-slot:item.actions="{ item }">
+                    <v-btn x-small class="mr-2" @click="openVerifDialog(item)" v-if="item.STATUS_PRESENSI !== 1"
+                        color="green"> Presensi
+                        <v-icon color="white">mdi-rotate-left</v-icon>
+                    </v-btn>
+                    <v-btn x-small class="mr-2" @click="displayCetakPresensiGym(item)" v-if="item.STATUS_PRESENSI === 1"
+                        color="green"> Cetak
+                        <v-icon color="white">mdi-rotate-left</v-icon>
+                    </v-btn>
+                </template>
             </v-data-table>
         </template>
-
 
         <!-- PerifDialog -->
         <v-dialog v-model="VerifDialog" max-width="500" persistent>
@@ -192,29 +164,6 @@ export default {
 
             // Mendapatkan tanggal dan waktu dalam format sesuai pengaturan waktu
             var formattedDateTime = TimeNow.toLocaleString('id-ID', options);
-            // var TimeNow = new Date();
-
-            // // Menyesuaikan waktu dengan GMT+7
-            // var offset = 7; // GMT+7
-            // TimeNow.setHours(TimeNow.getHours() + offset);
-
-            // // Mendapatkan tanggal dengan format DD-MM-YYYY
-            // var date = ("0" + TimeNow.getDate()).slice(-2); // Mendapatkan tanggal (01-31)
-            // var month = ("0" + (TimeNow.getMonth() + 1)).slice(-2); // Mendapatkan bulan (01-12)
-            // var year = TimeNow.getFullYear(); // Mendapatkan tahun dengan empat digit
-
-            // // Mendapatkan jam dengan format HH:MM:SS dalam GMT+7
-            // var hours = ("0" + TimeNow.getHours()).slice(-2); // Mendapatkan jam (00-23)
-            // var minutes = ("0" + TimeNow.getMinutes()).slice(-2); // Mendapatkan menit (00-59)
-            // var seconds = ("0" + TimeNow.getSeconds()).slice(-2); // Mendapatkan detik (00-59)
-
-            // // Format tanggal dan jam sesuai dengan keinginan Anda
-            // var formattedDate = date + "-" + month + "-" + year;
-            // var formattedTime = hours + ":" + minutes + ":" + seconds;
-
-
-
-
             var sesiBookingGym = item.SESI_BOOKING_KELAS;
             var startTime = new Date();
             startTime.setHours(6 + sesiBookingGym * 2, 0, 0);

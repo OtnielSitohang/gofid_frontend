@@ -6,7 +6,7 @@
 				<v-icon class="pa-2">
 					mdi-account
 				</v-icon> Welcome to
-				<span class="blue--text">GO</span><span class="red--text">FID</span>
+				<span class="blue--text">GO</span><span class="green--text">FIT</span>
 				{{ JSON.parse(sessionStorage.getItem("users")).NAMA_USER }}
 			</div>
 			<v-menu offset-y>
@@ -53,7 +53,7 @@
 				<v-row>
 					<v-col>
 						<center>
-							<span class="blue--text">GO</span><span class="red--text">FID</span>
+							<span class="blue--text">GO</span><span class="green--text">FIT</span>
 						</center>
 					</v-col>
 					<v-col>
@@ -183,6 +183,11 @@ export default {
 				icon: "mdi-account-multiple",
 				text: "Izin Instruktur",
 				to: "/Manager/Izin",
+			},
+			{
+				icon: "mdi-account-multiple",
+				text: "Laporan Aktivasi Kelas Bulanan",
+				to: "/Manager/LaporanAktivasiKelasBulanan",
 			},
 		],
 	}),
